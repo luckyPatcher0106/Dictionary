@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:controller="com.example.dictionarydemo.AppController"
+            id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2">
+    <children>
+        <HBox prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <VBox prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #f4f4f4;">
+                    <children>
+                        <HBox alignment="CENTER" cache="true" cacheHint="DEFAULT" disable="false" fillHeight="true"
+                              focusTraversable="false" mouseTransparent="false" pickOnBounds="true" prefHeight="40.0"
+                              prefWidth="200.0" spacing="10.0" style="-fx-background-color: #063563;">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="37.0" prefWidth="66.0" spacing="5.0">
+                                    <children>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
+                                                   preserveRatio="true" style="-fx-background-color: blue;"
+                                                   fx:id="searchIcon">
+                                        </ImageView>
+                                        <Label style="-fx-text-fill: white;&#10;" text="Search" onMouseClicked="#onSearchButtonClick">
+                                            <font>
+                                                <Font size="14.0" fx:id="x1"/>
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true"
+                                           style="" fx:id="clockIcon">
+                                </ImageView>
+                                <ImageView disable="false" fitHeight="20.0" fitWidth="20.0" focusTraversable="false"
+                                           opacity="1.0" pickOnBounds="true" preserveRatio="true" style=""
+                                           fx:id="starIcon">
+                                </ImageView>
+                            </children>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </HBox>
+                        <TextField fx:id="inputSearch" prefHeight="30.0" prefWidth="200.0">
+                            <VBox.margin>
+                                <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
+                            </VBox.margin>
+                        </TextField>
+                        <ListView fx:id="listViewSearch" orientation="VERTICAL" prefHeight="315.0" prefWidth="191.0">
+                            <VBox.margin>
+                                <Insets left="4.0" right="4.0"/>
+                            </VBox.margin>
+                        </ListView>
+                    </children>
+                </VBox>
+                <VBox prefHeight="400.0" prefWidth="200.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0"
+                              style="-fx-background-color: #0e457d;&#10;">
+                            <children>
+                                <ImageView disable="false" fitHeight="20.0" fitWidth="20.0" focusTraversable="false"
+                                           opacity="1.0" pickOnBounds="true" preserveRatio="true" style=""
+                                           fx:id="listIcon">
+                                    <HBox.margin>
+                                        <Insets right="5.0"/>
+                                    </HBox.margin>
+                                </ImageView>
+                                <Label font="$x1" style="-fx-text-fill: white;&#10;" text="Definition"/>
+                            </children>
+                            <padding>
+                                <Insets left="10.0"/>
+                            </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="109.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="109.0">
+                                    <children>
+                                        <Label fx:id="textResult" text="Hello"/>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="109.0">
+                                    <children>
+                                        <Label text="US"/>
+                                        <ImageView fitHeight="20.0" fitWidth="20.0"
+                                                   pickOnBounds="true"
+                                                   preserveRatio="true" fx:id="volumeIcon">
+                                            <HBox.margin>
+                                                <Insets left="6.0" right="5.0"/>
+                                            </HBox.margin>
+                                        </ImageView>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <VBox prefHeight="400.0" prefWidth="200.0">
+                    <HBox.margin>
+                        <Insets right="4.0"/>
+                    </HBox.margin>
+                    <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0"
+                          style="-fx-background-color: #0e457d;&#10;">
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                        <ImageView fitHeight="20.0" fitWidth="20.0"
+                                   pickOnBounds="true" preserveRatio="true"
+                                   fx:id="swapIcon">
+                            <HBox.margin>
+                                <Insets right="5.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Label font="$x1" style="-fx-text-fill: white;&#10;" text="Relation"/>
+                    </HBox>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
