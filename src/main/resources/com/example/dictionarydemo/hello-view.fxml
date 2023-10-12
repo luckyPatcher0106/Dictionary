@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.image.ImageView?>
+<GridPane  xmlns:fx="http://javafx.com/fxml">
+
+    <!-- Column 1 -->
+
+    <TextField fx:id="searchTextField" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+    <ImageView fx:id="searchIcon" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" >
+
+    </ImageView>
+
+    <!--    <Button text="Search" fx:id="searchButton" GridPane.columnIndex="1" GridPane.rowIndex="0" onAction="#onSearchButtonClick"/>-->
+
+    <ListView fx:id="listView" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="2"/>
+
+    <!-- Column 2 -->
+
+    <Label text="Title" fx:id="titleLabel" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+
+    <Label text="Description" fx:id="descriptionLabel" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+    <Text fx:id="descriptionText" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+    <!-- Column 3 -->
+
+    <Label text="Images" fx:id="imagesLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+    <ListView fx:id="imagesListView" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+</GridPane>
