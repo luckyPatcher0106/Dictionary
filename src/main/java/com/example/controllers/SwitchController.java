@@ -1,9 +1,10 @@
 package com.example.controllers;
 
 import base.advanced.Dictionary;
-//import client.dictionary.configs.Config;
-//import client.dictionary.configs.CssConfig;
-//import client.dictionary.configs.DatabaseConfig;
+import com.example.settings.cssSetting;
+import com.example.settings.dataSetting;
+import com.example.settings.readwriteLocal;
+import data.MongoDB;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,13 +32,18 @@ public class SwitchController extends MainController{
         return root;
     }
 
+    public static String DARK_CSS = Objects.requireNonNull(SwitchController.class.getResource("/com/css/application-dark.css")).toExternalForm();
+    public static String LIGHT_CSS = Objects.requireNonNull(SwitchController.class.getResource("/com/css/application-light.css")).toExternalForm();
+
     public static void initializeApplication(Stage _stage, FXMLLoader _root) throws IOException {
+        readwriteLocal.initialize();
+        if (dataSetting.getConfig()) MongoDB.initialize();
+        else Dictionary.initialize();
         root = _root;
         parent = root.load();
-        Dictionary.initialize();
         stage = _stage;
         scene = new Scene(parent, 1280, 720, false, SceneAntialiasing.BALANCED);
-        scene.getStylesheets().add("com/example/application-dark.css");
+        scene.getStylesheets().add(cssSetting.getConfig() ? DARK_CSS : LIGHT_CSS);
         renderScene();
     }
 

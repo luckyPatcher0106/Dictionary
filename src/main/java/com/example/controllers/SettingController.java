@@ -1,23 +1,18 @@
 package com.example.controllers;
 
 import base.advanced.Dictionary;
-//import client.dictionary.configs.CssConfig;
-//import client.dictionary.configs.DatabaseConfig;
-//import client.dictionary.configs.PlayAudioConfig;
 import com.example.settings.cssSetting;
 import com.example.settings.dataSetting;
 import data.MongoDB;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 
-public class SettingsController extends MainController {
+public class SettingController extends MainController {
     private Alert alert;
     @FXML
     private ChoiceBox<String> switchThemeChoiceBox, dataChoiceBox;
@@ -41,21 +36,21 @@ public class SettingsController extends MainController {
     public void onSwitchThemeChoiceBox() {
         if (switchThemeChoiceBox.getValue().equals("Dark")) {
             SwitchController.getScene().getStylesheets().remove(SwitchController.DARK_CSS);
-            if (!SceneController.getScene().getStylesheets().contains(SceneController.DARK_CSS))
-                SceneController.getScene().getStylesheets().add(SceneController.DARK_CSS);
-            CssConfig.setConfig(true);
+            if (!SwitchController.getScene().getStylesheets().contains(SwitchController.DARK_CSS))
+                SwitchController.getScene().getStylesheets().add(SwitchController.DARK_CSS);
+            cssSetting.setConfig(true);
         } else {
-            SceneController.getScene().getStylesheets().remove(SceneController.DARK_CSS);
-            if (!SceneController.getScene().getStylesheets().contains(SceneController.LIGHT_CSS))
-                SceneController.getScene().getStylesheets().add(SceneController.LIGHT_CSS);
-            CssConfig.setConfig(false);
+            SwitchController.getScene().getStylesheets().remove(SwitchController.DARK_CSS);
+            if (!SwitchController.getScene().getStylesheets().contains(SwitchController.LIGHT_CSS))
+                SwitchController.getScene().getStylesheets().add(SwitchController.LIGHT_CSS);
+            cssSetting.setConfig(false);
         }
     }
 
     @FXML
     public void onSwitchDataChoiceBox() {
         if(dataChoiceBox.getValue().equals("Local")){
-            if(DatabaseConfig.getConfig()){
+            if(dataSetting.getConfig()){
                 Thread thread = new Thread(() -> {
                     MongoDB.close();
                     Dictionary.initialize();
@@ -64,11 +59,11 @@ public class SettingsController extends MainController {
                 alert.show();
                 thread.setDaemon(true);
                 thread.start();
-                DatabaseConfig.setConfig(false);
+                dataSetting.setConfig(false);
             }
         }
         else {
-            if(!DatabaseConfig.getConfig()){
+            if(!dataSetting.getConfig()){
                 Thread thread = new Thread(() -> {
                     Dictionary.save();
                     MongoDB.initialize();
@@ -77,7 +72,7 @@ public class SettingsController extends MainController {
                 alert.show();
                 thread.setDaemon(true);
                 thread.start();
-                DatabaseConfig.setConfig(true);
+                dataSetting.setConfig(true);
             }
         }
     }

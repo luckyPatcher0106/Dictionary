@@ -8,5 +8,4 @@ public class dataSetting {
     public static void setConfig(boolean value) {
         readwriteLocal.getAllConfigs().put("database-online", value);
     }
-
 }

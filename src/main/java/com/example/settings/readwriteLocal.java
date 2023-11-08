@@ -16,7 +16,7 @@ public class readwriteLocal {
 
     public static void initialize() {
         try {
-            String content = new String(Files.readAllBytes(Path.of("src/main/java/client/dictionary/configs/settings.json")));
+            String content = new String(Files.readAllBytes(Path.of("src/main/java/com/example/settings/settings.json")));
             config = new JSONObject(content);
         } catch (IOException e) {
             e.printStackTrace();
