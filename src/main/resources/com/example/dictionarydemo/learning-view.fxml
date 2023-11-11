@@ -5,10 +5,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:controller="com.example.dictionarydemo.AppController"
-            id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/2.2">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarydemo.LearningController">
     <children>
         <HBox prefHeight="400.0" prefWidth="600.0">
             <children>
@@ -18,25 +17,27 @@
                               focusTraversable="false" mouseTransparent="false" pickOnBounds="true" prefHeight="40.0"
                               prefWidth="200.0" spacing="10.0" style="-fx-background-color: #063563;">
                             <children>
+                                <Button fx:id="btnBackHome" mnemonicParsing="false" text="Quay lại"/>
                                 <HBox alignment="CENTER" prefHeight="37.0" prefWidth="66.0" spacing="5.0">
                                     <children>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
-                                                   preserveRatio="true" style="-fx-background-color: blue;"
-                                                   fx:id="searchIcon">
+                                        <ImageView fx:id="searchIcon" fitHeight="20.0" fitWidth="20.0"
+                                                   pickOnBounds="true" preserveRatio="true"
+                                                   style="-fx-background-color: blue;">
                                         </ImageView>
-                                        <Label style="-fx-text-fill: white;&#10;" text="Search" onMouseClicked="#onSearchButtonClick">
+                                        <Label onMouseClicked="#onSearchButtonClick" style="-fx-text-fill: white;&#10;"
+                                               text="Search">
                                             <font>
                                                 <Font size="14.0" fx:id="x1"/>
                                             </font>
                                         </Label>
                                     </children>
                                 </HBox>
-                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true"
-                                           style="" fx:id="clockIcon">
+                                <ImageView fx:id="clockIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
+                                           preserveRatio="true" style="">
                                 </ImageView>
-                                <ImageView disable="false" fitHeight="20.0" fitWidth="20.0" focusTraversable="false"
-                                           opacity="1.0" pickOnBounds="true" preserveRatio="true" style=""
-                                           fx:id="starIcon">
+                                <ImageView fx:id="starIcon" disable="false" fitHeight="20.0" fitWidth="20.0"
+                                           focusTraversable="false" opacity="1.0" pickOnBounds="true"
+                                           preserveRatio="true" style="">
                                 </ImageView>
                             </children>
                             <VBox.margin>
@@ -60,9 +61,9 @@
                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="200.0"
                               style="-fx-background-color: #0e457d;&#10;">
                             <children>
-                                <ImageView disable="false" fitHeight="20.0" fitWidth="20.0" focusTraversable="false"
-                                           opacity="1.0" pickOnBounds="true" preserveRatio="true" style=""
-                                           fx:id="listIcon">
+                                <ImageView fx:id="listIcon" disable="false" fitHeight="20.0" fitWidth="20.0"
+                                           focusTraversable="false" opacity="1.0" pickOnBounds="true"
+                                           preserveRatio="true" style="">
                                     <HBox.margin>
                                         <Insets right="5.0"/>
                                     </HBox.margin>
@@ -77,15 +78,14 @@
                             <children>
                                 <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="109.0">
                                     <children>
-                                        <Label fx:id="textResult" text="Hello"/>
+                                        <Label fx:id="textResult" style="-fx-font-weight: bold;" text="result"/>
                                     </children>
                                 </HBox>
                                 <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="109.0">
                                     <children>
                                         <Label text="US"/>
-                                        <ImageView fitHeight="20.0" fitWidth="20.0"
-                                                   pickOnBounds="true"
-                                                   preserveRatio="true" fx:id="volumeIcon">
+                                        <ImageView fx:id="volumeIcon" fitHeight="20.0" fitWidth="20.0"
+                                                   pickOnBounds="true" preserveRatio="true">
                                             <HBox.margin>
                                                 <Insets left="6.0" right="5.0"/>
                                             </HBox.margin>
@@ -94,6 +94,35 @@
                                 </HBox>
                             </children>
                         </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="109.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="109.0">
+                                    <children>
+                                        <Label fx:id="textResultTranslated" style="-fx-font-weight: bold;"/>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="109.0">
+                                    <children>
+                                        <Label text="Dịch"/>
+                                        <ImageView fx:id="volumeIconTranslated" fitHeight="20.0" fitWidth="20.0"
+                                                   pickOnBounds="true" preserveRatio="true">
+                                            <HBox.margin>
+                                                <Insets left="6.0" right="5.0"/>
+                                            </HBox.margin>
+                                        </ImageView>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+                        <VBox>
+                            <Label style="-fx-text-fill: black; -fx-font-size: 16; -fx-font-weight: bold;"
+                                   text="Interjection"/>
+                            <Label fx:id="textInterjection" style="-fx-start-margin: 20px;">
+                                <VBox.margin>
+                                    <Insets bottom="4.0" left="10.0" right="4.0" top="4.0"/>
+                                </VBox.margin>
+                            </Label>
+                        </VBox>
                     </children>
                 </VBox>
                 <VBox prefHeight="400.0" prefWidth="200.0">
@@ -105,15 +134,21 @@
                         <padding>
                             <Insets left="10.0"/>
                         </padding>
-                        <ImageView fitHeight="20.0" fitWidth="20.0"
-                                   pickOnBounds="true" preserveRatio="true"
-                                   fx:id="swapIcon">
+                        <ImageView fx:id="swapIcon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <HBox.margin>
                                 <Insets right="5.0"/>
                             </HBox.margin>
                         </ImageView>
                         <Label font="$x1" style="-fx-text-fill: white;&#10;" text="Relation"/>
                     </HBox>
+                    <VBox>
+                        <Label fx:id="textRelation">
+                            <VBox.margin>
+                                <Insets bottom="4.0" left="10.0" right="4.0" top="4.0"/>
+                            </VBox.margin>
+                        </Label>
+                    </VBox>
                 </VBox>
             </children>
         </HBox>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarydemo.WordController">
+    <VBox prefHeight="400" prefWidth="600.0">
+        <HBox alignment="CENTER" prefHeight="38.0" prefWidth="600.0">
+            <children>
+                <Button fx:id="btnBack" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="137.0" text="Quay lại" />
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="600.0" style="-fx-font-weight: bold;" text="Quản lý từ vựng" textAlignment="CENTER">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+        <HBox prefHeight="360.0" prefWidth="600.0">
+            <VBox prefHeight="360.0" prefWidth="200.0">
+                <TextField fx:id="inputSearch" prefHeight="30.0" prefWidth="200.0" />
+                <ListView fx:id="listViewWord" prefHeight="330.0" prefWidth="200.0" />
+            </VBox>
+            <VBox prefHeight="350.0" prefWidth="433.0">
+                <HBox prefHeight="60.0" prefWidth="400.0">
+                    <Label prefHeight="60.0" prefWidth="100.0" text="Tiếng Anh">
+                        <font>
+                            <Font size="14.0" fx:id="x1" />
+                        </font>
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Label>
+                    <TextField fx:id="txtTarget" prefHeight="60.0" prefWidth="300" />
+                </HBox>
+                <HBox prefHeight="60.0" prefWidth="400.0">
+                    <Label font="$x1" prefHeight="60.0" prefWidth="100.0" text="Tiếng Việt">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Label>
+                    <TextField fx:id="txtExplain" prefHeight="60.0" prefWidth="300" />
+                </HBox>
+                <HBox prefHeight="60.0" prefWidth="400.0">
+                    <Label font="$x1" prefHeight="60.0" prefWidth="100.0" text="Câu liên quan" wrapText="true">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Label>
+                    <TextArea fx:id="txtInterjection" prefHeight="60.0" prefWidth="300" />
+                </HBox>
+                <HBox prefHeight="60.0" prefWidth="400.0">
+                    <Label font="$x1" prefHeight="60.0" prefWidth="100.0" text="Từ quan hệ">
+                        <HBox.margin>
+                            <Insets left="10.0" />
+                        </HBox.margin>
+                    </Label>
+                    <TextField fx:id="txtRelation" prefHeight="60.0" prefWidth="300" />
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="400.0">
+                    <Button fx:id="btnInsert" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Thêm" />
+                    <Button fx:id="btnEdit" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Sửa">
+                        <HBox.margin>
+                            <Insets left="10.0" right="10.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="btnDelete" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Xóa" />
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+</AnchorPane>
