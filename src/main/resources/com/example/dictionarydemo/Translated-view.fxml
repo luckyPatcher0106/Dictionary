@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dictionarydemo.TranslatedController">
+    <HBox maxHeight="400.0" maxWidth="600.0" prefHeight="400.0" prefWidth="600.0" spacing="10">
+        <VBox alignment="BOTTOM_CENTER">
+            <TextArea fx:id="leftTextArea" prefHeight="200.0" prefWidth="300.0" />
+        </VBox>
+        <VBox alignment="BOTTOM_CENTER">
+            <TextArea fx:id="rightTextArea" prefHeight="200.0" prefWidth="300.0" />
+        </VBox>
+    </HBox>
+   <Button mnemonicParsing="false" text="Button" />
+</AnchorPane>

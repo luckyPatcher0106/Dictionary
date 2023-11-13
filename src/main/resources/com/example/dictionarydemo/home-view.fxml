@@ -26,6 +26,8 @@
                                 text="Chơi game"/>
                         <Button fx:id="workManagementBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="236.0"
                                 text="Quản lý từ vựng"/>
+                        <Button fx:id="Translated" mnemonicParsing="false" prefHeight="32.0" prefWidth="236.0"
+                                text="Dịch văn bản"/>
                     </children>
                 </VBox>
             </children>

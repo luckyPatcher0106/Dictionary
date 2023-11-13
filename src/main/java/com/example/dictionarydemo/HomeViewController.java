@@ -17,12 +17,13 @@ public class HomeViewController implements Initializable {
     public Button learningBtn;
     public Button playGameBtn;
     public Button workManagementBtn;
+    public Button Translated;
     private Stage stage;
     private Scene scene;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        learningBtn.setOnAction(this::openLearningView);
+        learningBtn.setOnAction(actionEvent -> openLearningView(actionEvent));
         playGameBtn.setOnAction(actionEvent -> openPlayGameView());
         workManagementBtn.setOnAction(actionEvent -> openWordManagement(actionEvent));
     }

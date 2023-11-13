@@ -33,5 +33,6 @@ public class WordController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
 
+
     }
 }

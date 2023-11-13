@@ -112,8 +112,6 @@ public class LearningController implements Initializable {
         volumeIcon.setImage(volumeIconSource);
         volumeIconTranslated.setImage(volumeIconSource);
 
-
-
         setDataItems(dictionaryManagement.getWords());
 
         inputSearch.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -164,7 +162,7 @@ public class LearningController implements Initializable {
             thread.setDaemon(false);
             thread.start();
         });
-        btnBackHome.setOnAction(this::backToHome);
+        btnBackHome.setOnAction(ActionEvent -> backToHome(ActionEvent));
     }
 
 
