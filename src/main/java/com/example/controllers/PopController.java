@@ -72,12 +72,62 @@ public class PopController extends MainController {
     public void onClickAddTypeButton() {
         VBox typeParentVBox = new VBox();
         currentTypeParentVBox = typeParentVBox;
-        HBox typeHBox = new HBox();
-        ImageView typeImageAddExplain = new ImageView(Objects.requireNonNull(PopController.class.getResource("/com/example/icon/add.png")).toExternalForm());
+        HBox typeHbox = new HBox();
+        ImageView typeImageAddExplain = new ImageView(Objects.requireNonNull(PopController.class.getResource("/com/icons/add.png")).toExternalForm());
         typeImageAddExplain.setFitHeight(25);
         typeImageAddExplain.setFitWidth(25);
-        typeImageAddExplain.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onClickAddExampleButton(typeParentVBox));
-        
+        typeImageAddExplain.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onClickAddExplainButton(typeParentVBox));
+        TextField typeTextField = new TextField();
+        if (typeText != null) {
+            typeTextField.setText(typeText);
+            typeText = null;
+        }
+        typeTextField.setPromptText("danh từ, động từ, tính từ, ...");
+        typeTextField.setPrefWidth(489);
+        ImageView typeImageRemove = new ImageView(Objects.requireNonNull(PopController.class.getResource("/com/icons/remove.png")).toExternalForm());
+        typeImageRemove.setFitHeight(25);
+        typeImageRemove.setFitWidth(25);
+        typeImageRemove.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> editVbox.getChildren().remove(typeParentVBox));
+        typeHbox.getChildren().add(typeImageAddExplain);
+        typeHbox.getChildren().add(new Label("Loại từ"));
+        typeHbox.getChildren().add(typeTextField);
+        typeHbox.getChildren().add(typeImageRemove);
+        typeHbox.setSpacing(10);
+        typeHbox.setAlignment(Pos.CENTER_LEFT);
+        typeParentVBox.getChildren().add(typeHbox);
+        typeParentVBox.setSpacing(5);
+        editVbox.getChildren().add(typeParentVBox);
+    }
+
+    public void onClickAddExplainButton(VBox parentVBox) {
+        VBox explainParentVBox = new VBox();
+        currentExplainParentVBox = explainParentVBox;
+        HBox explainHbox = new HBox();
+        ImageView explainImageAddExample = new ImageView(Objects.requireNonNull(PopController.class.getResource("/com/icons/add.png")).toExternalForm());
+        explainImageAddExample.setFitHeight(25);
+        explainImageAddExample.setFitWidth(25);
+        explainImageAddExample.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onClickAddExampleButton(explainParentVBox));
+        TextField explainTextField = new TextField();
+        explainTextField.setPromptText("Giải thích tiếng việt");
+        if (explainText != null) {
+            explainTextField.setText(explainText);
+            explainText = null;
+        }
+        explainTextField.setPrefWidth(401);
+        ImageView explainImageRemove = new ImageView(Objects.requireNonNull(PopController.class.getResource("/com/icons/remove.png")).toExternalForm());
+        explainImageRemove.setFitHeight(25);
+        explainImageRemove.setFitWidth(25);
+        explainImageRemove.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> parentVBox.getChildren().remove(explainParentVBox));
+        explainHbox.getChildren().add(explainImageAddExample);
+        explainHbox.getChildren().add(new Label("Giải thích"));
+        explainHbox.getChildren().add(explainTextField);
+        explainHbox.getChildren().add(explainImageRemove);
+        explainHbox.setSpacing(10);
+        explainHbox.setPadding(new Insets(0, 0, 0, 70));
+        explainHbox.setAlignment(Pos.CENTER_LEFT);
+        explainParentVBox.getChildren().add(explainHbox);
+        explainParentVBox.setSpacing(5);
+        parentVBox.getChildren().add(explainParentVBox);
     }
 
     public void onClickAddExampleButton(VBox parentVBox) {
