@@ -29,7 +29,6 @@
                     </styleClass>
                 </Button>
                 <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingsButtonClick" styleClass="menu-btn" text="Cài đặt" textOverrun="CLIP" />
-            <Button fx:id="gameButotn" mnemonicParsing="false" onAction="#onClickGameButton" text="Trò chơi" />
             </children>
             <styleClass>
                 <String fx:value="menu-bar" />
