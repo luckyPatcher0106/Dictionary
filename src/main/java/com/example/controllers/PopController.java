@@ -1,11 +1,153 @@
 package com.example.controllers;
 
+import base.advanced.Dictionary;
+import com.example.mainApp.Notification;
+import com.example.settings.cssSetting;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class PopController extends MainController{
-    public void onClickAddTypeButton(ActionEvent event) {
+import javafx.scene.input.MouseEvent;
+import java.util.Objects;
+
+public class PopController extends MainController {
+
+    private String typeText = null;
+    private String explainText = null;
+    private String exampleText1 = null;
+    private String exampleText2 = null;
+
+    @FXML
+    private TextField wordTextField, pronounTextField;
+    @FXML
+    private VBox editVbox, currentTypeParentVBox, currentExplainParentVBox;
+
+    public void setWordTextField(String word) {
+        wordTextField.setText(word);
     }
 
-    public void onClickSaveButton(ActionEvent event) {
+    public void setPronounTextField(String word) {
+        pronounTextField.setText(word);
+    }
+
+    public void setTypeText(String typeText) {
+        this.typeText = typeText;
+    }
+
+    public void setExplainText(String explainText) {
+        this.explainText = explainText;
+    }
+
+    public void setExampleText1(String exampleText1) {
+        this.exampleText1 = exampleText1;
+    }
+
+    public void setExampleText2(String exampleText2) {
+        this.exampleText2 = exampleText2;
+    }
+
+    public TextField getWordTextField() {
+        return wordTextField;
+    }
+
+    public VBox getCurrentTypeParentVBox() {
+        return currentTypeParentVBox;
+    }
+
+    public VBox getCurrentExplainParentVBox() {
+        return currentExplainParentVBox;
+    }
+
+    @FXML
+    public void onClickAddTypeButton() {
+        VBox typeParentVBox = new VBox();
+        currentTypeParentVBox = typeParentVBox;
+        HBox typeHBox = new HBox();
+        ImageView typeImageAddExplain = new ImageView(Objects.requireNonNull(PopController.class.getResource("/com/example/icon/add.png")).toExternalForm());
+        typeImageAddExplain.setFitHeight(25);
+        typeImageAddExplain.setFitWidth(25);
+        typeImageAddExplain.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> onClickAddExampleButton(typeParentVBox));
+        
+    }
+
+    public void onClickAddExampleButton(VBox parentVBox) {
+        VBox exampleParentVbox = new VBox();
+        HBox exampleHbox = new HBox();
+        TextField exampleField1 = new TextField();
+        exampleField1.setPromptText("Câu tiếng anh");
+        if (exampleText1 != null) {
+            exampleField1.setText(exampleText1);
+            exampleText1 = null;
+        }
+        exampleField1.setPrefWidth(193);
+        TextField exampleField2 = new TextField();
+        exampleField2.setPromptText("Câu tiếng việt");
+        if (exampleText2 != null) {
+            exampleField2.setText(exampleText2);
+            exampleText2 = null;
+        }
+        exampleField2.setPrefWidth(193);
+        ImageView exampleImageRemove = new ImageView(Objects.requireNonNull(PopController.class.getResource("/com/icons/remove.png")).toExternalForm());
+        exampleImageRemove.setFitHeight(25);
+        exampleImageRemove.setFitWidth(25);
+        exampleImageRemove.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> parentVBox.getChildren().remove(exampleParentVbox));
+        exampleHbox.getChildren().add(new Label("Ví dụ"));
+        exampleHbox.getChildren().add(exampleField1);
+        exampleHbox.getChildren().add(exampleField2);
+        exampleHbox.getChildren().add(exampleImageRemove);
+        exampleHbox.setSpacing(10);
+        exampleHbox.setPadding(new Insets(0, 0, 0, 140));
+        exampleHbox.setAlignment(Pos.CENTER_LEFT);
+        exampleParentVbox.getChildren().add(exampleHbox);
+        exampleParentVbox.setSpacing(5);
+        parentVBox.getChildren().add(exampleParentVbox);
+    }
+
+    @FXML
+    public void onClickSaveButton() {
+        JSONObject wordJSON = new JSONObject();
+        JSONArray typeArray = new JSONArray();
+        for (int i = 0; i < editVbox.getChildren().size(); i++) {
+            VBox typeVBox = (VBox) editVbox.getChildren().get(i);
+            HBox typeHBox = (HBox) typeVBox.getChildren().get(0);
+            JSONObject typeJSON = new JSONObject();
+            JSONArray explainArray = new JSONArray();
+            for (int j = 1; j < typeVBox.getChildren().size(); j++) {
+                VBox explainVBox = (VBox) typeVBox.getChildren().get(j);
+                HBox explainHBox = (HBox) explainVBox.getChildren().get(0);
+                JSONObject explainJSON = new JSONObject();
+                JSONArray exampleArray = new JSONArray();
+                for (int k = 1; k < explainVBox.getChildren().size(); k++) {
+                    VBox exampleVBox = (VBox) explainVBox.getChildren().get(k);
+                    HBox exampleHBox = (HBox) exampleVBox.getChildren().get(0);
+                    JSONObject exampleJSON = new JSONObject();
+                    exampleJSON.put(((TextField) exampleHBox.getChildren().get(1)).getText(), ((TextField) exampleHBox.getChildren().get(2)).getText());
+                    exampleArray.put(exampleJSON);
+                }
+                explainJSON.put(((TextField) explainHBox.getChildren().get(2)).getText(), exampleArray);
+                explainArray.put(explainJSON);
+            }
+            typeJSON.put(((TextField) typeHBox.getChildren().get(2)).getText(), explainArray);
+            typeArray.put(typeJSON);
+        }
+        wordJSON.put("pronoun", pronounTextField.getText());
+        wordJSON.put("type", typeArray);
+        Dictionary.dictionaryInsert(wordTextField.getText(), wordJSON);
+        WordController WordController = SwitchController.getRoot().getController();
+        WordController.onTypeSearchInput();
+        WordController.onClickResultButton(wordTextField.getText());
+        Stage stage = (Stage) editVbox.getScene().getWindow();
+        stage.close();
+        Notification.show("Thêm/Sửa từ thành công", WordController.getRootPane(), cssSetting.getConfig());
     }
 }

@@ -4,12 +4,12 @@ import base.advanced.Dictionary;
 import com.example.settings.cssSetting;
 import com.example.settings.dataSetting;
 import com.example.settings.readwriteLocal;
-import data.MongoDB;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -37,13 +37,13 @@ public class SwitchController extends MainController{
 
     public static void initializeApplication(Stage _stage, FXMLLoader _root) throws IOException {
         readwriteLocal.initialize();
-        if (dataSetting.getConfig()) MongoDB.initialize();
-        else Dictionary.initialize();
+        Dictionary.initialize();
         root = _root;
         parent = root.load();
         stage = _stage;
         scene = new Scene(parent, 1280, 720, false, SceneAntialiasing.BALANCED);
         scene.getStylesheets().add(cssSetting.getConfig() ? DARK_CSS : LIGHT_CSS);
+        stage.initStyle(StageStyle.UTILITY);
         renderScene();
     }
 
@@ -76,6 +76,12 @@ public class SwitchController extends MainController{
         parent = root.load();
         renderScene();
     }
+
+//    public static void switchToGame() throws IOException {
+//        root = new FXMLLoader(SwitchController.class.getResource("/com/example/game.fxml"));
+//        parent = root.load();
+//        renderScene();
+//    }
 
     public static void renderScene() {
         scene.setRoot(parent);

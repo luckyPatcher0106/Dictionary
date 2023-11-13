@@ -10,13 +10,15 @@ module client.dictionary {
 //    requires org.kordamp.bootstrapfx.core;
 //    requires org.kordamp.ikonli.javafx;
 //    requires validatorfx;
-//    requires freetts;
+    requires freetts;
     requires mongo.java.driver;
     requires java.desktop;
 //    requires voicerss.tts;
 //    requires javafx.media;
     requires java.logging;
     requires org.apache.commons.text;
+    requires voicerss.tts;
+    requires org.controlsfx.controls;
 
     opens com.example to javafx.fxml;
     exports com.example.controllers;

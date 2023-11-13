@@ -3,7 +3,6 @@ package com.example.controllers;
 import base.advanced.Dictionary;
 import com.example.settings.cssSetting;
 import com.example.settings.dataSetting;
-import data.MongoDB;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -21,8 +20,8 @@ public class SettingController extends MainController {
     public void initialize() {
         switchThemeChoiceBox.setItems(FXCollections.observableArrayList("Light", "Dark"));
         switchThemeChoiceBox.setValue(cssSetting.getConfig() ? "Dark" : "Light");
-        dataChoiceBox.setItems(FXCollections.observableArrayList("Local", "MongoDB"));
-        dataChoiceBox.setValue(dataSetting.getConfig() ? "MongoDB" : "Local");
+        dataChoiceBox.setItems(FXCollections.observableArrayList("Local", "SQLLite"));
+        dataChoiceBox.setValue(dataSetting.getConfig() ? "SQLLite" : "Local");
         alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Import data");
         alert.setContentText("Đang import dữ liệu...");
@@ -52,7 +51,6 @@ public class SettingController extends MainController {
         if(dataChoiceBox.getValue().equals("Local")){
             if(dataSetting.getConfig()){
                 Thread thread = new Thread(() -> {
-                    MongoDB.close();
                     Dictionary.initialize();
                     Platform.runLater(() -> alert.close());
                 });
@@ -66,7 +64,6 @@ public class SettingController extends MainController {
             if(!dataSetting.getConfig()){
                 Thread thread = new Thread(() -> {
                     Dictionary.save();
-                    MongoDB.initialize();
                     Platform.runLater(() -> alert.close());
                 });
                 alert.show();

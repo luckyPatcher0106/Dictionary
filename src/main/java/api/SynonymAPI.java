@@ -35,5 +35,4 @@ public class SynonymAPI {
     public static void main(String[] args) throws IOException {
         System.out.println(getSynonymList("sleep"));
     }
-
 }

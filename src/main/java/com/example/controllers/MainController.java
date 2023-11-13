@@ -25,8 +25,8 @@ public class MainController {
         SwitchController.switchToSetting();
     }
 
-    @FXML
-    public void onPopButtonClick() throws  IOException {
-        SwitchController.switchToPop();
-    }
+//    @FXML
+//    public void onGameButtonClick() throws IOException {
+//        SwitchController.switchToGame();
+//    }
 }

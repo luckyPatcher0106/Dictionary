@@ -4,7 +4,6 @@ import base.advanced.Dictionary;
 import com.example.controllers.SwitchController;
 import com.example.settings.dataSetting;
 import com.example.settings.readwriteLocal;
-import data.MongoDB;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
@@ -20,8 +19,7 @@ public class Main extends javafx.application.Application {
     @Override
     public void stop() throws IOException {
         readwriteLocal.save();
-        if (dataSetting.getConfig()) MongoDB.close();
-        else Dictionary.save();
+        Dictionary.save();
     }
 
     public static void main(String[] args) {
