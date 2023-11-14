@@ -64,7 +64,7 @@
                                         <Insets left="10.0" right="10.0" />
                                     </HBox.margin>
                                 </Label>
-                                <ChoiceBox fx:id="inputLangChoiceBox" onAction="#onSwitchInputLanguage" prefWidth="150.0" />
+                                <ChoiceBox fx:id="inputTypeLanguage" onAction="#onSwitchInputLanguage" prefWidth="150.0" />
                             </children>
                         </HBox>
                         <TextArea fx:id="inputTextArea" layoutX="26.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" promptText="Type Here..." wrapText="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
@@ -110,7 +110,7 @@
                                         <Insets left="10.0" right="10.0" />
                                     </HBox.margin>
                                 </Label>
-                                <ChoiceBox fx:id="outputLangChoiceBox" onAction="#onSwitchOutputLanguage" prefWidth="150.0" />
+                                <ChoiceBox fx:id="outputTypeLanguage" onAction="#onSwitchOutputLanguage" prefWidth="150.0" />
                             </children>
                         </HBox>
                         <TextArea fx:id="outputTextArea" editable="false" layoutX="7.0" prefHeight="200.0" prefWidth="200.0" wrapText="true" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
