@@ -6,11 +6,11 @@ import com.voicerss.tts.Languages;
 import com.voicerss.tts.VoiceParameters;
 import com.voicerss.tts.VoiceProvider;
 
-public class TextToSpeechAPIOnline {
-    public static void getTextToSpeech(String text) {
+public class  TextToSpeechAPIOnline {
+    public static void getTextToSpeech(String text, String language) {
         try {
-            VoiceProvider tts = new VoiceProvider("600b8fac7a214e5e91fff8c9baf69a4a");
-            VoiceParameters params = new VoiceParameters(text, Languages.English_UnitedStates);
+            VoiceProvider tts = new VoiceProvider("b71ac35ba2a140d29a88ade10512d5e9");
+            VoiceParameters params = new VoiceParameters(text, language.equals("English") ? Languages.English_UnitedStates : Languages.Vietnamese);
             params.setCodec(AudioCodec.WAV);
             params.setFormat(AudioFormat.Format_44KHZ.AF_44khz_16bit_stereo);
             params.setBase64(false);

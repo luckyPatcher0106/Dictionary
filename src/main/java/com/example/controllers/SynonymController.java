@@ -1,13 +1,17 @@
 package com.example.controllers;
 
 import api.SynonymAPI;
+import com.example.mainApp.Notification;
+import com.example.settings.InternetConnect;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextFlow;
 import org.json.JSONArray;
@@ -20,21 +24,27 @@ public class SynonymController extends MainController {
     private VBox contentVBox;
 
     @FXML
+    private AnchorPane rootPane;
+
+    @FXML
     public void onSubmitSearchBtn() {
-        Thread thread = new Thread(() -> {
-            JSONObject list = SynonymAPI.getSynonymList(searchTextField.getText());
-            Platform.runLater(() -> {
-                contentVBox.getChildren().clear();
-                fetchData(list, "synonyms");
-                fetchData(list, "antonyms");
-                fetchData(list, "hypernyms");
-                fetchData(list, "hyponyms");
+        InternetConnect internetConnect = new InternetConnect();
+        if (internetConnect.isInternetAvailable()) {
+            Thread thread = new Thread(() -> {
+                JSONObject list = SynonymAPI.getSynonymList(searchTextField.getText());
+                Platform.runLater(() -> {
+                    contentVBox.getChildren().clear();
+                    fetchData(list, "synonyms");
+                    fetchData(list, "antonyms");
+                });
             });
-        });
-        thread.setDaemon(true);
-        thread.start();
-        contentVBox.getChildren().clear();
-        contentVBox.getChildren().add(new Label("Đang lấy dữ liệu..."));
+            thread.setDaemon(true);
+            thread.start();
+            contentVBox.getChildren().clear();
+            contentVBox.getChildren().add(new Label("Đang lấy dữ liệu..."));
+        } else {
+            Notification.show("No internet connectino", rootPane, true);
+        }
     }
 
     private void fetchData(JSONObject list, String type) {

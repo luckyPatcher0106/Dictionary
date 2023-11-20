@@ -5,5 +5,12 @@ public class AudioSetting {
         return readwriteLocal.getAllConfigs().getBoolean("play-audio-online");
     }
 
-    public static void setConfig(boolean value) {readwriteLocal.getAllConfigs().put("play-audio-online", value);}
+    public static void setConfig() {
+        InternetConnect internetConnect = new InternetConnect();
+        if (InternetConnect.isInternetAvailable()) {
+            readwriteLocal.getAllConfigs().put("play-audio-online", true);
+        } else {
+            readwriteLocal.getAllConfigs().put("play-audio-online", false);
+        }
+    }
 }

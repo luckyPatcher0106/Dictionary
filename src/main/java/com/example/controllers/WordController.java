@@ -118,12 +118,13 @@ public class WordController  extends MainController {
 
     @FXML
     public void onPlayAudioButton() {
-        if (AudioSetting.getConfig()) {
-            Thread thread = new Thread(() -> TextToSpeechAPIOnline.getTextToSpeech(wordLabel.getText()));
+        AudioSetting.setConfig();
+        if (!AudioSetting.getConfig()) {
+            Thread thread = new Thread(() -> TextToSpeechAPIOffline.getTextToSpeech(wordLabel.getText()));
             thread.setDaemon(true);
             thread.start();
         } else {
-            Thread thread = new Thread(() -> TextToSpeechAPIOffline.getTextToSpeech(wordLabel.getText()));
+            Thread thread = new Thread(() -> TextToSpeechAPIOnline.getTextToSpeech(wordLabel.getText(), "English"));
             thread.setDaemon(true);
             thread.start();
         }
@@ -158,7 +159,7 @@ public class WordController  extends MainController {
         JSONObject selectedWord;
         selectedWord = Dictionary.dictionaryLookup(result);
         currentWord = result;
-        wordLabel.setText(result);
+        wordLabel.setText(currentWord);
         if (!selectedWord.getString("pronoun").equals(""))
             pronounLabel.setText(String.format("[%s]", selectedWord.getString("pronoun")));
         else pronounLabel.setText("");

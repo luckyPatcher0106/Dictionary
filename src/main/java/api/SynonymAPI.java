@@ -8,16 +8,22 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+import com.example.settings.InternetConnect;
 import org.apache.commons.text.StringEscapeUtils;
 import org.json.JSONObject;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class SynonymAPI {
     public static JSONObject getSynonymList(String wordForm) {
         try {
-            URL url = new URL("https://languagetools.p.rapidapi.com/all/" + URLEncoder.encode(wordForm, StandardCharsets.UTF_8).replace("+", "%20"));
+            URL url = new URL("https://api.api-ninjas.com/v1/thesaurus?word=" + URLEncoder.encode(wordForm, StandardCharsets.UTF_8).replace("+", "%20"));
             HttpURLConnection request = (HttpURLConnection) url.openConnection();
-            request.setRequestProperty("x-rapidapi-host", "languagetools.p.rapidapi.com");
-            request.setRequestProperty("x-rapidapi-key", "aca2c0c9a3mshdae9b0fd091fb0dp1923ffjsn84863605816e");
+            request.setRequestProperty("X-API-Host", "api.api-ninjas.com");
+            request.setRequestProperty("X-API-Key", "3ohhuoyfjbq5/1Hxozq3UA==86QPDaezsTSNlbe8");
             request.setRequestMethod("GET");
             BufferedReader inputStream = new BufferedReader(new InputStreamReader(request.getInputStream()));
             String inputLine;
@@ -28,11 +34,12 @@ public class SynonymAPI {
             inputStream.close();
             return new JSONObject(StringEscapeUtils.unescapeHtml4(response.toString()));
         } catch (IOException e) {
-            return new JSONObject("{\"hypernyms\":[],\"synonyms\":[],\"antonyms\":[],\"hyponyms\":[]}");
+            return new JSONObject("{\"synonyms\":[],\"antonyms\":[]}");
         }
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(getSynonymList("sleep"));
+        System.out.println(getSynonymList("bright"));
     }
+
 }

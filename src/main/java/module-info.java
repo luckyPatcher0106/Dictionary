@@ -10,10 +10,13 @@ module com.example {
     requires org.apache.commons.text;
     requires voicerss.tts;
     requires org.controlsfx.controls;
+    requires com.fasterxml.jackson.databind;
 
     opens com.example to javafx.fxml;
     exports com.example.controllers;
     opens com.example.controllers to javafx.fxml;
     exports com.example.mainApp;
     opens com.example.mainApp to javafx.fxml;
+    exports com.example.settings;
+    opens com.example.settings to javafx.fxml;
 }

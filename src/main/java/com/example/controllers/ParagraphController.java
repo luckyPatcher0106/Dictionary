@@ -5,6 +5,7 @@ import api.TextToSpeechAPIOffline;
 import api.TextToSpeechAPIOnline;
 import com.example.mainApp.Notification;
 import com.example.settings.AudioSetting;
+import com.example.settings.InternetConnect;
 import com.example.settings.cssSetting;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -46,29 +47,35 @@ public class ParagraphController extends MainController {
     @FXML
     public void onTranslateButtonClick() throws IOException {
         String input = inputTextArea.getText();
-        Thread thread = new Thread(() -> {
-            String output = null;
-            try {
-                if (inputTypeLanguage.getValue().equals("English")) {
-                    output = GoogleAPI.translate("en", "vi", input);
-                } else {
-                    output = GoogleAPI.translate("vi", "en", input);
+        InternetConnect internetConnect = new InternetConnect();
+        if (InternetConnect.isInternetAvailable()) {
+            Thread thread = new Thread(() -> {
+                String output = null;
+                try {
+                    if (inputTypeLanguage.getValue().equals("English")) {
+                        output = GoogleAPI.translate("en", "vi", input);
+                    } else {
+                        output = GoogleAPI.translate("vi", "en", input);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            String finaloutput = output;
-            Platform.runLater(() -> outputTextArea.setText(finaloutput));
-        });
-        thread.setDaemon(true);
-        thread.start();
-        outputTextArea.setPromptText("Đang dịch...");
-        outputTextArea.setText(null);
+                String finaloutput = output;
+                Platform.runLater(() -> outputTextArea.setText(finaloutput));
+            });
+            thread.setDaemon(true);
+            thread.start();
+            outputTextArea.setPromptText("Đang dịch...");
+            outputTextArea.setText(null);
+        } else {
+            Notification.show("Not internet connection", rootPane, true);
+        }
     }
 
     public void onPlayAudioInputBtn() {
+        AudioSetting.setConfig();
         if (AudioSetting.getConfig()) {
-            Thread thread = new Thread(() -> TextToSpeechAPIOnline.getTextToSpeech(inputTextArea.getText()));
+            Thread thread = new Thread(() -> TextToSpeechAPIOnline.getTextToSpeech(inputTextArea.getText(), inputTypeLanguage.getValue()));
             thread.setDaemon(true);
             thread.start();
         } else {
@@ -89,8 +96,9 @@ public class ParagraphController extends MainController {
     }
 
     public void onPlayAudioOutputBtn() {
+        AudioSetting.setConfig();
         if (AudioSetting.getConfig()) {
-            Thread thread = new Thread(() -> TextToSpeechAPIOnline.getTextToSpeech(outputTextArea.getText()));
+            Thread thread = new Thread(() -> TextToSpeechAPIOnline.getTextToSpeech(outputTextArea.getText(),outputTypeLanguage.getValue()));
             thread.setDaemon(true);
             thread.start();
         } else {
