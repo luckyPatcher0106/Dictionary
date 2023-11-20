@@ -17,6 +17,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -32,10 +34,11 @@ import java.util.concurrent.atomic.DoubleAdder;
 
 public class WordController  extends MainController {
 
+
     private Alert alert;
     private ArrayList<String> outputDictionary;
     private int countLazy = 0;
-    private String currentWord;
+    private String currentWord ;
     private String currentTypeWord = "";
     private Thread voiceRegThread;
     @FXML
@@ -53,6 +56,7 @@ public class WordController  extends MainController {
     @FXML
     private VBox outputVbox, explainVbox;
 
+
     public AnchorPane getRootPane() {
         return rootPane;
     }
@@ -67,13 +71,37 @@ public class WordController  extends MainController {
         thread.setDaemon(true);
         thread.start();
         //load on scroll
+
         listWordScroll.vvalueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
             if (listWordScroll.getVvalue() >= 0.75) {
                 countLazy += 50;
                 addListWordButton();
             }
         });
+
+//        listWordScroll.setOnKeyPressed(e -> {
+//            if (e.getCode() == KeyCode.UP) {
+//                navigateWords(-1);
+//                addListWordButton();// Navigate to previous word
+//            } else if (e.getCode() == KeyCode.DOWN) {
+//                navigateWords(1);
+//                addListWordButton();// Navigate to next word
+//            }
+//        });
     }
+
+//    private void navigateWords(int direction) {
+//        for (int i = 0; i < outputDictionary.size(); i++) {
+//              int currentIndex = i;
+//            if (currentIndex < 0) {
+//                currentIndex = 0; // Prevent going below the first element
+//            } else if (currentIndex >= outputDictionary.size()) {
+//                currentIndex = outputDictionary.size() - 1; // Prevent going above the last element
+//            }
+//
+//           outputDictionary.get(currentIndex);
+//        }
+//    }
 
     public void onPressEnterSearchInput() {
         if (!outputDictionary.get(0).equals("")) {
@@ -114,7 +142,7 @@ public class WordController  extends MainController {
         });
         thread.setDaemon(true);
         thread.start();
-    }
+      }
 
     @FXML
     public void onPlayAudioButton() {
