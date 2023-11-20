@@ -4,8 +4,6 @@
       <root url="jar://$PROJECT_DIR$/src/libs/voicerss_tts.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$PROJECT_DIR$/src/libs/voicerss_tts.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>
