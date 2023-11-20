@@ -32,8 +32,10 @@ public class WordleController {
 
     public Button resetButton;
 
+    @FXML
     private FlowPane buttonFlowPane;
 
+    @FXML
     private TilePane letterTilePane;
 
     private WordTally wordTally;
