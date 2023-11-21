@@ -79,7 +79,7 @@ public class ParagraphController extends MainController {
             outputTextArea.setPromptText("Đang dịch...");
             outputTextArea.setText(null);
         } else {
-            Notification.show("Not internet connection", rootPane, true);
+            Notification.show("Internet hiện tại không khả dụng!", rootPane, true);
         }
     }
 
@@ -135,26 +135,31 @@ public class ParagraphController extends MainController {
         final ClipboardContent content = new ClipboardContent();
         content.putString(text.getText());
         clipboard.setContent(content);
-        Notification.show("Copied To Clipboard", rootPane, cssSetting.getConfig());
+        Notification.show("Đã sao chép vào bộ nhớ tạm!", rootPane, cssSetting.getConfig());
     }
 
     @FXML
     public void onMicrophoneButtonClick() {
-        if (!AudioManager.isRecording()) {
-            Notification.show("Bắt đầu ghi âm. Bấm nút microphone để dừng", rootPane, cssSetting.getConfig());
-            voiceRegThread = new Thread(() -> {
-                AudioManager.startRecording();
-                String searchResult = SpeechToTextAPI.getSpeechToText();
-                Platform.runLater(() -> {
-                    alert.close();
-                    inputTextArea.setText(searchResult);
+        InternetConnect internetConnect = new InternetConnect();
+        if (internetConnect.isInternetAvailable()) {
+            if (!AudioManager.isRecording()) {
+                Notification.show("Bắt đầu ghi âm. Bấm nút microphone để dừng", rootPane, cssSetting.getConfig());
+                voiceRegThread = new Thread(() -> {
+                    AudioManager.startRecording();
+                    String searchResult = SpeechToTextAPI.getSpeechToText();
+                    Platform.runLater(() -> {
+                        alert.close();
+                        inputTextArea.setText(searchResult);
+                    });
                 });
-            });
-            voiceRegThread.setDaemon(true);
-            voiceRegThread.start();
+                voiceRegThread.setDaemon(true);
+                voiceRegThread.start();
+            } else {
+                alert.show();
+                AudioManager.stopRecording();
+            }
         } else {
-            alert.show();
-            AudioManager.stopRecording();
+            Notification.show("Internet hiện tại không khả dụng!", rootPane, true);
         }
     }
 }

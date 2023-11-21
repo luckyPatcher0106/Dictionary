@@ -43,7 +43,7 @@ public class SynonymController extends MainController {
             contentVBox.getChildren().clear();
             contentVBox.getChildren().add(new Label("Đang lấy dữ liệu..."));
         } else {
-            Notification.show("No internet connectino", rootPane, true);
+            Notification.show("Internet hiện tại không khả dụng!", rootPane, true);
         }
     }
 
