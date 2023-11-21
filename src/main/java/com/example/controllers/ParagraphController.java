@@ -1,8 +1,6 @@
 package com.example.controllers;
 
-import api.GoogleAPI;
-import api.TextToSpeechAPIOffline;
-import api.TextToSpeechAPIOnline;
+import api.*;
 import com.example.mainApp.Notification;
 import com.example.settings.AudioSetting;
 import com.example.settings.InternetConnect;
@@ -10,6 +8,7 @@ import com.example.settings.cssSetting;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
@@ -19,6 +18,8 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class ParagraphController extends MainController {
+
+    private Alert alert;
 
     @FXML
     private AnchorPane rootPane;
@@ -35,12 +36,22 @@ public class ParagraphController extends MainController {
     @FXML
     private TextArea outputTextArea;
 
+    private Thread voiceRegThread;
+
     @FXML
     public void initialize() {
         inputTypeLanguage.setItems(FXCollections.observableArrayList("English", "Vietnamese"));
         outputTypeLanguage.setItems(FXCollections.observableArrayList("Vietnamese", "English"));
         inputTypeLanguage.setValue("English");
         outputTypeLanguage.setValue("Vietnamese");
+        alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Voice Recognition");
+        alert.setContentText("Đang xử lý âm thanh...");
+        alert.setResizable(false);
+        alert.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        Button cancel = (Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL);
+        EventHandler<ActionEvent> event = e -> voiceRegThread.stop();
+        cancel.setOnAction(event);
     }
 
 
@@ -125,5 +136,25 @@ public class ParagraphController extends MainController {
         content.putString(text.getText());
         clipboard.setContent(content);
         Notification.show("Copied To Clipboard", rootPane, cssSetting.getConfig());
+    }
+
+    @FXML
+    public void onMicrophoneButtonClick() {
+        if (!AudioManager.isRecording()) {
+            Notification.show("Bắt đầu ghi âm. Bấm nút microphone để dừng", rootPane, cssSetting.getConfig());
+            voiceRegThread = new Thread(() -> {
+                AudioManager.startRecording();
+                String searchResult = SpeechToTextAPI.getSpeechToText();
+                Platform.runLater(() -> {
+                    alert.close();
+                    inputTextArea.setText(searchResult);
+                });
+            });
+            voiceRegThread.setDaemon(true);
+            voiceRegThread.start();
+        } else {
+            alert.show();
+            AudioManager.stopRecording();
+        }
     }
 }

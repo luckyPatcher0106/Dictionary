@@ -1,10 +1,10 @@
 package com.example.controllers;
 
 import api.AudioManager;
+import api.SpeechToTextAPI;
 import api.TextToSpeechAPIOffline;
 import api.TextToSpeechAPIOnline;
 import base.advanced.Dictionary;
-import com.example.mainApp.Notification;
 import com.example.mainApp.Notification;
 import com.example.mainApp.popWindow;
 import com.example.settings.AudioSetting;
@@ -12,7 +12,6 @@ import com.example.settings.cssSetting;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -23,14 +22,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.PopupWindow;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.concurrent.atomic.DoubleAdder;
 
 public class WordController  extends MainController {
 
@@ -79,6 +75,16 @@ public class WordController  extends MainController {
             }
         });
 
+        // record
+        alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Voice Recognition");
+        alert.setContentText("Đang xử lý âm thanh...");
+        alert.setResizable(false);
+        alert.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        Button cancel = (Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL);
+        EventHandler<ActionEvent> event = e -> voiceRegThread.stop();
+        cancel.setOnAction(event);
+
 //        listWordScroll.setOnKeyPressed(e -> {
 //            if (e.getCode() == KeyCode.UP) {
 //                navigateWords(-1);
@@ -109,24 +115,25 @@ public class WordController  extends MainController {
         }
     }
 
+    @FXML
     public void onMicrophoneButtonClick() {
-//        if (!AudioManager.isRecording()) {
-//            Notion.show("Bắt đầu ghi âm. Bấm nút microphone để dừng", rootPane, CssConfig.getConfig());
-//            voiceRegThread = new Thread(() -> {
-//                AudioManager.startRecording();
-//                String searchResult = SpeechToTextAPI.getSpeechToText();
-//                Platform.runLater(() -> {
-//                    alert.close();
-//                    searchInput.setText(searchResult);
-//                    onTypeSearchInput();
-//                });
-//            });
-//            voiceRegThread.setDaemon(true);
-//            voiceRegThread.start();
-//        } else {
-//            alert.show();
-//            AudioManager.stopRecording();
-//        }
+        if (!AudioManager.isRecording()) {
+            Notification.show("Bắt đầu ghi âm. Bấm nút microphone để dừng", rootPane, cssSetting.getConfig());
+            voiceRegThread = new Thread(() -> {
+                AudioManager.startRecording();
+                String searchResult = SpeechToTextAPI.getSpeechToText();
+                Platform.runLater(() -> {
+                    alert.close();
+                    searchInput.setText(searchResult);
+                    onTypeSearchInput();
+                });
+            });
+            voiceRegThread.setDaemon(true);
+            voiceRegThread.start();
+        } else {
+            alert.show();
+            AudioManager.stopRecording();
+        }
     }
 
     public void onTypeSearchInput() {

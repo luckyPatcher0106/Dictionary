@@ -38,12 +38,11 @@ public class SwitchController extends MainController{
     public static void initializeApplication(Stage _stage, FXMLLoader _root) throws IOException {
         readwriteLocal.initialize();
         Dictionary.initialize();
+        stage = _stage;
         root = _root;
         parent = root.load();
-        stage = _stage;
         scene = new Scene(parent, 1280, 720, false, SceneAntialiasing.BALANCED);
         scene.getStylesheets().add(cssSetting.getConfig() ? DARK_CSS : LIGHT_CSS);
-        stage.initStyle(StageStyle.UTILITY);
         renderScene();
     }
 
