@@ -8,6 +8,7 @@ import base.advanced.Dictionary;
 import com.example.mainApp.Notification;
 import com.example.mainApp.popWindow;
 import com.example.settings.AudioSetting;
+import com.example.settings.InternetConnect;
 import com.example.settings.cssSetting;
 import javafx.application.Platform;
 import javafx.beans.value.ObservableValue;
@@ -117,22 +118,27 @@ public class WordController  extends MainController {
 
     @FXML
     public void onMicrophoneButtonClick() {
-        if (!AudioManager.isRecording()) {
-            Notification.show("Bắt đầu ghi âm. Bấm nút microphone để dừng", rootPane, cssSetting.getConfig());
-            voiceRegThread = new Thread(() -> {
-                AudioManager.startRecording();
-                String searchResult = SpeechToTextAPI.getSpeechToText();
-                Platform.runLater(() -> {
-                    alert.close();
-                    searchInput.setText(searchResult);
-                    onTypeSearchInput();
+        InternetConnect internetConnect = new InternetConnect();
+        if (internetConnect.isInternetAvailable()) {
+            if (!AudioManager.isRecording()) {
+                Notification.show("Bắt đầu ghi âm. Bấm nút microphone để dừng", rootPane, cssSetting.getConfig());
+                voiceRegThread = new Thread(() -> {
+                    AudioManager.startRecording();
+                    String searchResult = SpeechToTextAPI.getSpeechToText();
+                    Platform.runLater(() -> {
+                        alert.close();
+                        searchInput.setText(searchResult);
+                        onTypeSearchInput();
+                    });
                 });
-            });
-            voiceRegThread.setDaemon(true);
-            voiceRegThread.start();
+                voiceRegThread.setDaemon(true);
+                voiceRegThread.start();
+            } else {
+                alert.show();
+                AudioManager.stopRecording();
+            }
         } else {
-            alert.show();
-            AudioManager.stopRecording();
+            Notification.show("Internet hiện tại không khả dụng!", rootPane, true);
         }
     }
 
