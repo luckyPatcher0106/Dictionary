@@ -15,7 +15,6 @@ public class SuccessContestController implements Initializable {
         public void Ok(){
             pane.setVisible(false);
             //ContestController.ratecount =0;
-
         }
 
         @Override

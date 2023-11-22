@@ -47,7 +47,7 @@ public class SwitchController extends MainController{
     }
 
     public static void switchToHome() throws IOException {
-        root = new FXMLLoader(SwitchController.class.getResource("/com/example/home.fxml"));
+        root = new FXMLLoader(SwitchController.class.getResource("/com/example/home-view.fxml"));
         parent = root.load();
         renderScene();
     }
