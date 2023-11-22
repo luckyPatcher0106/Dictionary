@@ -1,4 +1,4 @@
-package Game.Services;
+package Game.entity;
 
 
 import Game.Styles.LetterStyle;
@@ -55,6 +55,11 @@ public class LetterLabel extends Label {
     }
     public DisplayType getMatchResult() {
         return matchResult.get();
+    }
+
+    public void reset() {
+        this.setText("");
+        this.setLetterDisplay(DisplayType.PLAIN);
     }
 
 }

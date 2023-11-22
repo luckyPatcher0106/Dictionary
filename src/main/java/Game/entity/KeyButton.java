@@ -1,21 +1,25 @@
-package Game.Services;
+package Game.entity;
 
-import Game.Styles.LetterStyle;
+import static Game.Styles.LetterStyle.MATCHING_PSEUDO_CLASS;
+import static Game.Styles.LetterStyle.NOMATCH_PSEUDO_CLASS;
+import static Game.Styles.LetterStyle.PARTIALMATCH_PSEUDO_CLASS;
+import static Game.Styles.LetterStyle.PLAIN_PSEUDO_CLASS;
+import Game.Styles.LetterStyle.DisplayType;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.scene.control.Button;
 
-import static Game.Styles.LetterStyle.*;
-
-public class KeyButton extends javafx.scene.control.Button {
+public class KeyButton extends Button {
 
     public KeyButton() {
+        super();
         getStylesheets().add("matching-letter");
         getStylesheets().add("nomatch-letter");
         getStylesheets().add("partialmatch-letter");
         getStylesheets().add("plain-letter");
     }
 
-    public final ObjectProperty<LetterStyle.DisplayType> wordDisplay = new SimpleObjectProperty<>(LetterStyle.DisplayType.PLAIN){
+    public final ObjectProperty<DisplayType> wordDisplay = new SimpleObjectProperty<>(DisplayType.PLAIN){
 
         @Override
         public void invalidated() {
@@ -34,10 +38,10 @@ public class KeyButton extends javafx.scene.control.Button {
         }
 
     };
-    public LetterStyle.DisplayType getWordDisplay() {
+    public DisplayType getWordDisplay() {
         return wordDisplay.get();
     }
-    public void setWordDisplay(LetterStyle.DisplayType labelType) {
+    public void setWordDisplay(DisplayType labelType) {
         this.wordDisplay.set(labelType);
     }
 }

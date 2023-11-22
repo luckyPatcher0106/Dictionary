@@ -1,5 +1,8 @@
 
 .box {
+    -fx-display: flex;
+    -fx-focus-traversable: false;
+    -fx-tick-labels-visible: false;
     -fx-spacing: 5;
     -fx-alignment: center;
     -fx-background-color: white;

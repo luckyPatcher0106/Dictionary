@@ -5,6 +5,7 @@ import com.example.controllers.SwitchController;
 import com.example.settings.dataSetting;
 import com.example.settings.readwriteLocal;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
