@@ -191,18 +191,15 @@
                     <list>javafx.scene.layout.FlowPane</list>
                     <list>javafx.scene.text.Text</list>
                     <list>javafx.css.PseudoClass</list>
-                    <list>com.asgteach.WordishController</list>
-                    <list>com.asgteach.StatsController</list>
-                    <list>com.asgteach.HowToController</list>
-                    <list>com.asgteach.model.GameStatus</list>
+                    <list>Game.Services.WordPopUp</list>
                     <list>com.asgteach.model.LetterState</list>
-                    <list>com.asgteach.model.WordStats</list>
-                    <list>com.asgteach.model.WordTally</list>
-                    <list>com.asgteach.modelview.KeyButton</list>
-                    <list>com.asgteach.modelview.LetterLabel</list>
-                    <list>com.asgteach.modelview.LetterStyle</list>
-                    <list>com.asgteach.modelview.WordPopup</list>
-                    <list>com.asgteach.service.WordData</list>
+                    <list>Game.Styles.LetterStyle</list>
+                    <list>Game.Services.WordTally</list>
+                    <list>Game.Status</list>
+                    <list>Game.entity.KeyButton</list>
+                    <list>Game.entity.LetterLabel</list>
+                    <list>Game.Services.LetterState</list>
+                    <list>Game.GetDataFromFile.Data</list>
                     <list>org.kordamp.ikonli.javafx.FontIcon</list>
                 </reflectionList>
                 <resourcesList>

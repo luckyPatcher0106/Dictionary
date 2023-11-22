@@ -7,7 +7,15 @@ import java.io.IOException;
 
 public class MainController {
 
+    @FXML
+    public void Exit() throws IOException {
+        SwitchController.switchToHome();
+    }
 
+    @FXML
+    public void onGameButton() throws IOException {
+        SwitchController.switchtoGame();
+    }
     public void BackToHome() throws IOException {
         SwitchController.switchToHome();
     }

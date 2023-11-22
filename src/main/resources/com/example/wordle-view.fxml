@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -12,14 +13,10 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import Game.entity.LetterLabel?>
-<?import Game.entity.KeyButton?>
 
-<?import org.kordamp.ikonli.javafx.FontIcon?>
-
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="736.0" minWidth="413.0"  prefHeight="736.0" prefWidth="414.0" stylesheets="../css/Wordle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game.WordleController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="736.0" prefWidth="414.0" stylesheets="../../../../../Wordle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.WordleController">
     <children>
-        <VBox layoutX="223.0" layoutY="166.0" maxHeight="736.0" maxWidth="414.0" minHeight="736.0" minWidth="414.0" prefHeight="736.0" prefWidth="414.0" styleClass="box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="CENTER" layoutX="223.0" layoutY="166.0" maxHeight="736.0" maxWidth="414.0" minHeight="736.0" minWidth="414.0" prefHeight="736.0" prefWidth="414.0" styleClass="box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <GridPane alignment="TOP_CENTER" maxWidth="-Infinity" prefWidth="350.0" vgap="15.0">
                     <columnConstraints>
@@ -32,19 +29,25 @@
                         <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="resetButton" contentDisplay="CENTER" mnemonicParsing="false" textFill="#3875d0" onAction="#resetGame" >
+                        <Button fx:id="resetButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#resetGame" textFill="#3875d0">
                             <graphic>
-                                <FontIcon iconColor="darkblue" iconLiteral="mdi2r-replay" iconSize="28" />
+                                <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../icons/redo.png" />
+                                </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="infoButton" contentDisplay="CENTER" mnemonicParsing="false" textFill="#3875d0" onAction="#switchToInfo" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Button fx:id="infoButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToInfo" textFill="#3875d0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                             <graphic>
-                                <FontIcon iconColor="darkblue" iconLiteral="mdi2i-information-variant" iconSize="28" />
+                                <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                                        <Image url="@../icons/infoicon.png" />
+                                </ImageView>
                             </graphic>
                         </Button>
-                        <Button fx:id="statsButton" contentDisplay="CENTER" mnemonicParsing="false" textFill="#3875d0" onAction="#BachHome" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <Button fx:id="statsButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#BachHome" textFill="#3875d0" GridPane.columnIndex="2" GridPane.rowIndex="0">
                             <graphic>
-                                <FontIcon iconColor="darkblue" iconLiteral="mdi2c-chart-box-outline" iconSize="28" />
+                                <ImageView fitHeight="40" fitWidth="40" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../icons/back.png" />
+                                </ImageView>
                             </graphic>
                         </Button>
                         <Label text="W O R D I S H" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
@@ -56,75 +59,74 @@
                 </GridPane>
                 <TilePane fx:id="letterTilePane" alignment="TOP_CENTER" hgap="5.0" maxHeight="345.0" maxWidth="413.0" minHeight="345.0" minWidth="413.0" prefHeight="345.0" prefRows="6" prefTileHeight="50.0" prefTileWidth="55.0" prefWidth="413.0" styleClass="tile" tileAlignment="TOP_CENTER" vgap="5.0">
                     <children>
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
-                        <LetterLabel />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
+                        <Label />
                     </children>
                     <padding>
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                     </padding>
                 </TilePane>
-                <FlowPane fx:id="buttonFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="5.0" maxHeight="200.0" maxWidth="413.0" minHeight="200.0" minWidth="413.0" prefHeight="200.0" prefWidth="413.0" prefWrapLength="300.0" styleClass="flow" vgap="8.0">
+                <FlowPane fx:id="buttonFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="5.0" maxHeight="200.0" maxWidth="662.0" minHeight="200.0" minWidth="412.0" prefHeight="200.0" prefWidth="662.0" prefWrapLength="320.0" styleClass="flow" vgap="8.0">
                     <children>
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="Q" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="W" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="E" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="R" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="T" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="Y" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="U" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="I" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="O" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="P" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="A" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="S" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="D" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="F" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="G" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="H" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="J" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="K" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="L" textAlignment="CENTER" />
-                        <KeyButton fx:id="enterButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#processEnter" prefHeight="57.0" prefWidth="60.0" text="ENTER" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="Z" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="X" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="C" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="V" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="B" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="N" textAlignment="CENTER" />
-                        <KeyButton contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="35.0" text="M" textAlignment="CENTER" />
-                        <KeyButton fx:id="deleteButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#processDelete" prefHeight="57.0" prefWidth="57.0" textAlignment="CENTER">
+                        <Button contentDisplay="CENTER" styleClass="button" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="Q" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="W" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="E" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="R" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="T" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="Y" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="U" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="I" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="O" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="P" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="A" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="S" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="D" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="F" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="G" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="H" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="J" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="K" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="L" textAlignment="CENTER" />
+                        <Button fx:id="enterButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#processEnter" prefHeight="57.0" prefWidth="80.0" text="ENTER" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="Z" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="X" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="C" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="V" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="B" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="N" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="57.0" prefWidth="60.0" text="M" textAlignment="CENTER" />
+                        <Button fx:id="deleteButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#processDelete" prefHeight="57.0" prefWidth="80.0" textAlignment="CENTER">
                             <graphic>
-                                <FontIcon iconLiteral="mdi2b-backspace-outline" iconSize="24" />
                             </graphic>
-                        </KeyButton>
+                        </Button>
                     </children>
                 </FlowPane>
             </children>

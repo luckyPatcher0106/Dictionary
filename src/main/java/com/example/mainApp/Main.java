@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader root = new FXMLLoader(getClass().getResource("/com/example/Contest.fxml"));
+        FXMLLoader root = new FXMLLoader(getClass().getResource("/com/example/wordle-view.fxml"));
         SwitchController.initializeApplication(stage, root);
     }
 

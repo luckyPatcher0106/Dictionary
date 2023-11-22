@@ -18,7 +18,7 @@
                 <VBox alignment="BASELINE_CENTER" prefHeight="149.0" prefWidth="600.0" spacing="40.0">
                     <children>
                         <Button fx:id="learningBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="236.0" text="Học từ vựng" onAction="#onOfflineButtonClick"/>
-                        <Button fx:id="playGameBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="236.0" text="Chơi game" />
+                        <Button fx:id="playGameBtn" mnemonicParsing="false" prefHeight="32.0" prefWidth="236.0" text="Chơi game" onAction="#onGameButton"/>
                     </children>
                 </VBox>
             </children>

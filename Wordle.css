@@ -1,6 +1,5 @@
 
 .box {
-    -fx-display: flex;
     -fx-focus-traversable: false;
     -fx-tick-labels-visible: false;
     -fx-spacing: 5;
@@ -9,7 +8,7 @@
 }
 
 .root {
-    -fx-button-base-color: #d3d6d9;
+    -fx-button-base-color: grey;
     -fx-text-fill-base-color: black;
     -fx-text-fill-alt-color: white;
     -fx-partialmatch-color: #c5b565;

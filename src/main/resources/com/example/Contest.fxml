@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -10,52 +8,43 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.controllers.ContestController"
-            prefHeight="400.0" prefWidth="600.0"
-            fx:id="anchorPane">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFCA4B" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.ContestController">
     <children>
-        <ImageView fitHeight="505.0" fitWidth="768.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../icons/questionbg.jpg" />
-            </image>
-        </ImageView>
-        <Label fx:id="question" layoutX="66.0" layoutY="71.0" prefHeight="25.0" prefWidth="603.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-color: red;">
+        <Label fx:id="question" alignment="CENTER" layoutX="265.0" layoutY="70.0" prefHeight="71.0" prefWidth="841.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-border-color: red;">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label fx:id="success" layoutX="66.0" layoutY="96.0" prefHeight="17.0" prefWidth="479.0">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <Button fx:id="A" layoutX="93.0" layoutY="253.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="89.0" />
-        <Button fx:id="B" layoutX="246.0" layoutY="253.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="89.0" />
-        <Button fx:id="C" layoutX="413.0" layoutY="253.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="89.0" />
-        <Button fx:id="D" layoutX="563.0" layoutY="253.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="89.0" />
-        <Label fx:id="explainquestion" layoutX="66.0" layoutY="128.0" prefHeight="105.0" prefWidth="603.0" wrapText="true" />
-        <ImageView fitHeight="42.0" fitWidth="46.0" layoutY="5.0" onMouseClicked="#out" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+        <Button fx:id="A" contentDisplay="CENTER" layoutX="170.0" layoutY="253.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="180.0" />
+        <Button fx:id="B" contentDisplay="CENTER" layoutX="420.0" layoutY="253.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="180.0" />
+        <Button fx:id="C" contentDisplay="CENTER" layoutX="696.0" layoutY="253.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="180.0" />
+        <Button fx:id="D" alignment="CENTER" contentDisplay="CENTER" layoutX="966.0" layoutY="253.0" mnemonicParsing="false" prefHeight="110.0" prefWidth="180.0" />
+        <Label fx:id="explainquestion" layoutX="66.0" layoutY="155.0" prefHeight="79.0" prefWidth="603.0" wrapText="true" />
+        <ImageView fitHeight="79.0" fitWidth="46.0" layoutX="-1.0" layoutY="5.0" onMouseClicked="#BackToHome" pickOnBounds="true" preserveRatio="true" rotate="180.0">
             <image>
                 <Image url="@../icons/2606505_5844.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="98.0" fitWidth="156.0" layoutX="283.0" layoutY="382.0" onMouseClicked="#next" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="98.0" fitWidth="156.0" layoutX="600.0" layoutY="448.0" onMouseClicked="#next" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../icons/next.png" />
             </image>
         </ImageView>
-        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="66.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="98.0" fitWidth="90.0" layoutX="66.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../icons/rate.png" />
             </image>
         </ImageView>
-        <Label fx:id="rate" layoutX="119.0" layoutY="8.0" prefHeight="33.0" prefWidth="38.0" textFill="RED">
+        <Label fx:id="rate" layoutX="118.0" layoutY="80.0" prefHeight="33.0" prefWidth="38.0" textFill="RED">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Pane fx:id="pane" layoutX="158.0" layoutY="25.0" prefHeight="239.0" prefWidth="443.0" />
+        <Pane fx:id="pane" layoutX="157.0" layoutY="14.0" prefHeight="239.0" prefWidth="255.0" />
+        <Label fx:id="success" layoutX="389.0" layoutY="32.0" prefHeight="34.0" prefWidth="487.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

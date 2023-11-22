@@ -1,14 +1,15 @@
 package Game.GetDataFromFile;
 
-import java.io.InputStream;
+import java.io.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Data {
 
-    private Set<Integer> Total = new HashSet<Integer>();
+    private Set<Integer> Total = new HashSet<>();
 
     int index = 0;
 
@@ -18,15 +19,15 @@ public class Data {
 
     private Random rand = new Random();
 
-    public Data() {
-        this.Total = new HashSet<Integer>();
-        this.word = null;
+    private static Data instance = null;
+
+    public static Data getInstance() {
+        if (instance == null) {
+            instance = new Data();
+        }
+        return instance;
     }
 
-    public Data(Set<Integer> Total, List<String> word) {
-        this.Total = Total;
-        this.word = word;
-    }
 
     public String getSingleWord(){
         return SingleWord;
@@ -44,11 +45,13 @@ public class Data {
         return Total;
     }
 
-    public void GetData() {
-        try(InputStream is = Data.class.getResourceAsStream("/Game/wordlist.txt");) {
-            word = new java.io.BufferedReader(new java.io.InputStreamReader(is)).lines().collect(java.util.stream.Collectors.toList());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+    private Data() {
+        System.out.println("building word data");
+        File file = new File("wordlist.txt"); // Đường dẫn tương đối
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            word = br.lines().collect(Collectors.toList());
+        } catch (IOException ex) {
+            System.out.println(ex.getLocalizedMessage());
         }
     }
 

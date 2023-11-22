@@ -14,7 +14,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public class ContestController implements Initializable {
+public class ContestController extends MainController implements Initializable  {
 
 
         @FXML
@@ -112,7 +112,7 @@ public class ContestController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return " khong tim thay cau hoi";
+            return " Invalid Question";
         }
 
         private void handleButtonClick(Button button, String word) {
@@ -120,8 +120,9 @@ public class ContestController implements Initializable {
 
             if (guessedChar.equals(word)) {
                 System.out.println(word);
-                success.setText("ban da doan dung");
+                success.setText("Congratulation");
                 ratecount += 5;
+
                 System.out.println(ratecount);
                 System.out.println(word);
                 System.out.println("dung");
@@ -132,7 +133,7 @@ public class ContestController implements Initializable {
                 System.out.println(button.getText());
                 System.out.println(word);
                 System.out.println(ratecount);
-                success.setText("dap an ban chon da sai ");
+                success.setText("Wrong Answer ");
                 System.out.println("sai");
             }
             try {
@@ -150,7 +151,6 @@ public class ContestController implements Initializable {
             Random random = new Random();
             int ranId = random.nextInt(Listquestion().size());
             question.setText(Listquestion().get(ranId));
-
         }
 
         public void setActionButton(String word) {
@@ -158,22 +158,7 @@ public class ContestController implements Initializable {
             B.setOnAction(event -> handleButtonClick(B, word));
             C.setOnAction(event -> handleButtonClick(C, word));
             D.setOnAction(event -> handleButtonClick(D, word));
-
-
         }
-
-        public void out() {
-            Node node;
-            try {
-                node = FXMLLoader.load(getClass().getResource("home-view.fxml"));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            anchorPane.getChildren().setAll(node);
-
-
-        }
-
         public void next() {
 
             if (cnt < 20) {
