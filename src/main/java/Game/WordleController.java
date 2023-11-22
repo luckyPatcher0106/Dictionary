@@ -1,4 +1,4 @@
-package com.example.controllers;
+package Game;
 
 import Game.GetDataFromFile.Data;
 import Game.Status;

@@ -162,4 +162,7 @@ public class ParagraphController extends MainController {
             Notification.show("Internet hiện tại không khả dụng!", rootPane, true);
         }
     }
+
+
+
 }

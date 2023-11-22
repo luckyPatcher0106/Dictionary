@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" styleClass="pane" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.WordController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" styleClass="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.WordController">
     <children>
         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <opaqueInsets>
@@ -25,6 +31,7 @@
                 <Button fx:id="onlineButton" mnemonicParsing="false" onAction="#onOnlineButtonClick" styleClass="menu-btn" text="Dịch văn bản" textOverrun="WORD_ELLIPSIS" />
                 <Button fx:id="synonymButton" mnemonicParsing="false" onAction="#onSynonymButtonClick" styleClass="menu-btn" text="Từ đồng nghĩa" textOverrun="WORD_ELLIPSIS" />
                 <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingsButtonClick" styleClass="menu-btn" text="Cài đặt" textOverrun="CLIP" />
+            <Button fx:id="ExitButton" mnemonicParsing="false" text="Exit" styleClass="menu-btn" onAction="#BackToHome"/>
             </children>
             <styleClass>
                 <String fx:value="menu-bar" />

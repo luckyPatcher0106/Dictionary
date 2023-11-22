@@ -17,13 +17,14 @@ module com.example {
     requires org.kordamp.ikonli.materialdesign2;
 
 
-    opens Game.entity to javafx.fxml;
-    opens Game to javafx.fxml;
-    exports Game;
+
     opens com.example to javafx.fxml;
     exports com.example.controllers;
     opens com.example.controllers to javafx.fxml;
     exports com.example.mainApp;
     opens com.example.mainApp to javafx.fxml;
+    opens Game.entity to javafx.fxml;
+    opens Game to javafx.fxml;
+    exports Game;
 
 }

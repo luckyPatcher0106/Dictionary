@@ -1,10 +1,17 @@
 package com.example.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
 
 public class MainController {
+
+
+    public void BackToHome() throws IOException {
+        SwitchController.switchToHome();
+    }
+
     @FXML
     public void onOfflineButtonClick() throws IOException {
         SwitchController.switchToWord();

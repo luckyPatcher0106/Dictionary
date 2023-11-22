@@ -170,6 +170,47 @@
             </configuration>
         </plugin>
 
+        <plugin>
+            <groupId>com.gluonhq</groupId>
+            <artifactId>gluonfx-maven-plugin</artifactId>
+            <version>${gluonfx.plugin.version}</version>
+            <configuration>
+                <target>${gluonfx.target}</target>
+
+                <mainClass>${main.class}</mainClass>
+                <verbose>true</verbose>
+                <reflectionList>
+                    <list>javafx.scene.chart.BarChart</list>
+                    <list>javafx.scene.chart.CategoryAxis</list>
+                    <list>javafx.scene.chart.NumberAxis</list>
+                    <list>javafx.scene.shape.Line</list>
+                    <list>javafx.scene.layout.GridPane</list>
+                    <list>javafx.scene.layout.ColumnConstraints</list>
+                    <list>javafx.scene.layout.RowConstraints</list>
+                    <list>javafx.scene.layout.TilePane</list>
+                    <list>javafx.scene.layout.FlowPane</list>
+                    <list>javafx.scene.text.Text</list>
+                    <list>javafx.css.PseudoClass</list>
+                    <list>com.asgteach.WordishController</list>
+                    <list>com.asgteach.StatsController</list>
+                    <list>com.asgteach.HowToController</list>
+                    <list>com.asgteach.model.GameStatus</list>
+                    <list>com.asgteach.model.LetterState</list>
+                    <list>com.asgteach.model.WordStats</list>
+                    <list>com.asgteach.model.WordTally</list>
+                    <list>com.asgteach.modelview.KeyButton</list>
+                    <list>com.asgteach.modelview.LetterLabel</list>
+                    <list>com.asgteach.modelview.LetterStyle</list>
+                    <list>com.asgteach.modelview.WordPopup</list>
+                    <list>com.asgteach.service.WordData</list>
+                    <list>org.kordamp.ikonli.javafx.FontIcon</list>
+                </reflectionList>
+                <resourcesList>
+                    <list>com.asgteach.service.wordlist.txt</list>
+                </resourcesList>
+            </configuration>
+        </plugin>
+
 
 
       <plugin>

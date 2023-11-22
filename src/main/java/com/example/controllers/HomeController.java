@@ -1,5 +1,6 @@
 package com.example.controllers;
 
-public class HomeController {
 
+
+public class HomeController extends MainController {
 }

@@ -29,6 +29,7 @@
                     </styleClass>
                 </Button>
                 <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#onSettingsButtonClick" styleClass="menu-btn" text="Cài đặt" textOverrun="CLIP" />
+            <Button fx:id="ExitButton" mnemonicParsing="false" text="Exit" styleClass="menu-btn" onAction="#BackToHome"/>
             </children>
             <styleClass>
                 <String fx:value="menu-bar" />

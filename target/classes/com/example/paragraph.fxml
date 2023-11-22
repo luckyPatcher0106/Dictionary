@@ -42,6 +42,9 @@
                         <Insets />
                     </HBox.margin>
                 </Button>
+            <Button
+                    fx:id="ExitButton" mnemonicParsing="false" text="Exit" styleClass="menu-btn" onAction="#BackToHome">
+            </Button>
             </children>
             <opaqueInsets>
                 <Insets />

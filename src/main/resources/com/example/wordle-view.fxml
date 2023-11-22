@@ -17,7 +17,7 @@
 
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="736.0" maxWidth="413.0" minHeight="736.0" minWidth="413.0"  prefHeight="736.0" prefWidth="414.0" stylesheets="../css/Wordle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.WordleController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="736.0" minWidth="413.0"  prefHeight="736.0" prefWidth="414.0" stylesheets="../css/Wordle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game.WordleController">
     <children>
         <VBox layoutX="223.0" layoutY="166.0" maxHeight="736.0" maxWidth="414.0" minHeight="736.0" minWidth="414.0" prefHeight="736.0" prefWidth="414.0" styleClass="box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>

@@ -4,13 +4,12 @@ package Game.entity;
 import Game.Styles.LetterStyle;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.control.Label;
 
 import static Game.Styles.LetterStyle.*;
 import static Game.Styles.LetterStyle.DisplayType.DISPLAYING;
 import static Game.Styles.LetterStyle.DisplayType.PLAIN;
 
-public class LetterLabel extends Label {
+public class LetterLabel extends javafx.scene.control.Label {
 
     public LetterLabel() {
         getStyleClass().add("displaying-letter");
