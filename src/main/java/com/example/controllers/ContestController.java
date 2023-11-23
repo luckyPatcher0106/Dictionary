@@ -160,7 +160,6 @@ public class ContestController extends MainController implements Initializable  
             D.setOnAction(event -> handleButtonClick(D, word));
         }
         public void next() {
-
             if (cnt < 20) {
                 try {
                     setquestion();
@@ -169,9 +168,7 @@ public class ContestController extends MainController implements Initializable  
                 }
                 answer(question.getText());
                 setActionButton(answer(question.getText()));
-
             } else {
-
                 Node node;
                 try {
                     node = FXMLLoader.load(getClass().getResource("successContest.fxml"));
@@ -198,8 +195,6 @@ public class ContestController extends MainController implements Initializable  
             }
             answer(question.getText());
             setActionButton(answer(question.getText()));
-
-
         }
 }
 
