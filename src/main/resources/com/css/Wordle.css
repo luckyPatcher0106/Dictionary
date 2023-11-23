@@ -1,14 +1,12 @@
 
 .box {
-    -fx-focus-traversable: false;
-    -fx-tick-labels-visible: false;
     -fx-spacing: 5;
     -fx-alignment: center;
     -fx-background-color: white;
 }
 
 .root {
-    -fx-button-base-color: grey;
+    -fx-button-base-color: #d3d6d9;
     -fx-text-fill-base-color: black;
     -fx-text-fill-alt-color: white;
     -fx-partialmatch-color: #c5b565;
@@ -17,22 +15,18 @@
 }
 
 /* Remove the annoying default focus on the buttons */
-.button {
-    -fx-focus-color: darkgray;
-    -fx-faint-focus-color: darkgray;
-}
 
 
 .tile > .label {
     -fx-max-width:55;
     -fx-max-height: 50;
     -fx-font-family: "Arial";
-    -fx-text-fill: -fx-text-fill-base-color;
+    -fx-text-fill: black;
     -fx-font-size: 36px;
     -fx-font-weight: bold;
     -fx-text-alignment:center;
     -fx-alignment:CENTER;
-    -fx-outer-border: -fx-button-base-color;
+    -fx-outer-border: #d3d6d9;
     -fx-body-color: white;
     -fx-background-color:
             -fx-outer-border,
@@ -40,37 +34,37 @@
     -fx-background-insets: 0, 2;
 }
 
-.tile > .plain-letter:plain {
-    -fx-outer-border: -fx-button-base-color;
-    -fx-body-color: white;
-    -fx-text-fill: -fx-text-fill-base-color;
-}
+/*.tile > .plain-letter:plain {*/
+/*    -fx-outer-border: -fx-button-base-color;*/
+/*    -fx-body-color: white;*/
+/*    -fx-text-fill: -fx-text-fill-base-color;*/
+/*}*/
 
-.tile > .displaying-letter:displaying {
-    -fx-outer-border: -fx-nomatch-color;
-    -fx-body-color: white;
-    -fx-text-fill: -fx-text-fill-base-color;
-}
+/*.tile > .displaying-letter:displaying {*/
+/*    -fx-outer-border: -fx-nomatch-color;*/
+/*    -fx-body-color: white;*/
+/*    -fx-text-fill: -fx-text-fill-base-color;*/
+/*}*/
 
-.tile > .matching-letter:matching {
-    -fx-outer-border: -fx-match-color;
-    -fx-body-color: -fx-match-color;
-    -fx-text-fill: -fx-text-fill-alt-color;
-}
+/*.tile > .matching-letter:matching {*/
+/*    -fx-outer-border: -fx-match-color;*/
+/*    -fx-body-color: -fx-match-color;*/
+/*    -fx-text-fill: -fx-text-fill-alt-color;*/
+/*}*/
 
-.tile > .nomatch-letter:nomatch {
-    -fx-outer-border: -fx-nomatch-color;
-    -fx-body-color: -fx-nomatch-color;
-    -fx-text-fill: -fx-text-fill-alt-color;
-}
+/*.tile > .nomatch-letter:nomatch {*/
+/*    -fx-outer-border: -fx-nomatch-color;*/
+/*    -fx-body-color: -fx-nomatch-color;*/
+/*    -fx-text-fill: -fx-text-fill-alt-color;*/
+/*}*/
 
-.tile > .partialmatch-letter:partialmatch {
-    -fx-outer-border: -fx-partialmatch-color;
-    -fx-body-color: -fx-partialmatch-color;
-    -fx-text-fill: -fx-text-fill-alt-color;
-}
+/*.tile > .partialmatch-letter:partialmatch {*/
+/*    -fx-outer-border: -fx-partialmatch-color;*/
+/*    -fx-body-color: -fx-partialmatch-color;*/
+/*    -fx-text-fill: -fx-text-fill-alt-color;*/
+/*}*/
 
-.flow > .button  {
+.button1  {
     -fx-background-color: -fx-button-base-color;
     -fx-font-family: "Arial";
     -fx-text-fill: -fx-text-fill-base-color;
@@ -78,19 +72,23 @@
     -fx-font-weight: bold;
 }
 
-.flow > .button:disabled {
+.button1:disabled {
     -fx-opacity: 1.0 ;
 }
 
-.flow > .button:pressed {
+button1:hover{
+    -fx-background-color: grey;
+}
+
+.button1:pressed {
     -fx-background-color: -fx-button-base-color;
 }
 
-.flow > .button:armed {
+.button1:armed {
     -fx-background-color: -fx-nomatch-color;
 }
 
-.flow > .button:focused {
+.button1:focused {
     -fx-background-color: -fx-focus-color;
 }
 

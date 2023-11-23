@@ -15,7 +15,7 @@ public class WordPopUp {
             final Popup popup = new Popup();
             popup.setAutoFix(true);
             Label label = new Label(message);
-            label.getStylesheets().add("Wordle.css");
+            label.getStylesheets().add("com/css/Wordle.css");
             label.getStyleClass().add("popup");
             popup.getContent().add(label);
             return popup;

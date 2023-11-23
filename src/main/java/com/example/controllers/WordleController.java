@@ -1,6 +1,7 @@
 package com.example.controllers;
 
 import Game.GetDataFromFile.Data;
+import Game.Services.WordPopUp;
 import Game.Status;
 import Game.Services.LetterState;
 import Game.Services.WordTally;
@@ -16,6 +17,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.transform.Rotate;
@@ -29,6 +31,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static Game.Styles.LetterStyle.DisplayType.*;
+import static java.awt.AWTEventMulticaster.add;
 
 
 public class WordleController {
@@ -41,6 +44,7 @@ public class WordleController {
     public Button infoButton;
 
     public Button resetButton;
+    public AnchorPane Anchorpane;
 
     @FXML
     private FlowPane buttonFlowPane;
@@ -72,9 +76,14 @@ public class WordleController {
 
     private static final Status GameStatus = Status.getInstance();
 
+    private static final WordPopUp WordPopup = new WordPopUp();
+
     private final List<String> messages = Arrays.asList();
 
+
     public void initialize() {
+        Anchorpane.getStylesheets().add(getClass().getResource("/com/css/Wordle.css").toExternalForm());;
+
         letterTilePane.setAlignment(Pos.TOP_CENTER);
         letterTilePane.setPrefRows(6);
 
@@ -144,7 +153,7 @@ public class WordleController {
 // Thiết lập nội dung và hiển thị cho chữ cái
         Label currentLetter = letterLabels.get(index);
         currentLetter.setText(letter);
-//        currentLetter.setLetterDisplay(LetterStyle.DisplayType.DISPLAYING);
+        currentLetter.getStyleClass().add("letter");
 
 // Tăng giá trị của squarenum
         squareSize.set(currentSquareNum + 1);
@@ -273,7 +282,7 @@ public class WordleController {
                     para.getChildren().addAll(fade, rotate);
                     seq.getChildren().add(para);
                 });
-        seq.setOnFinished(x -> gameHouseKeeping(list));
+        //seq.setOnFinished(x -> gameHouseKeeping(list));
         seq.play();
     }
 
@@ -307,33 +316,33 @@ public class WordleController {
         para.play();
     }
 
-    private void gameHouseKeeping(List<Label> list) {
-        processWord.set(false);
-//        list.stream()
-//                .forEach(ll ->
-//                        keyButtons.get(ll.getText()).setWordDisplay(ll.getMatchResult())
-//                );
-
-//        if ((list.stream()
-//                .filter(c -> !c.getMatchResult().equals(MATCHING))
-//                .count() == 0)) {   //match!
-//            System.out.println("Winner! You guessed the word " + RandomWord.getSingleWord());
-//            //WordPopup.show(messages.get(rownum), enterButton);
-//            //animateSuccessGroup(list);
-//            //updateGameState(true);
-//        } else if (rownum + 1 >= letterTilePane.getPrefRows()) {
-//            // You took too many guesses
-//            //WordPopup.show("Sorry! You lose this time!\nThe word is " + WordData.getTheWord(), enterButton);
-//            //updateGameState(false);
-//        } else // Update letter grid
-//            if (squareSize.get() >= rowsize) {
-//                squareSize.set(0);
-//                rownum++;
-//                if (rownum >= letterTilePane.getPrefRows()) {
-//                    rownum = 0;
-//                }
-//            }
-    }
+//    private void gameHouseKeeping(List<Label> list) {
+//////        processWord.set(false);
+//////        list.stream()
+//////                .forEach(ll ->
+//////                        keyButtons.get(ll.getText()).setWordDisplay(ll.getMatchResult())
+//////                );
+//////
+//////        if ((list.stream()
+//////                .filter(c -> !c.getMatchResult().equals(MATCHING))
+//////                .count() == 0)) {   //match!
+//////            System.out.println("Winner! You guessed the word " + RandomWord.getSingleWord());
+//////            WordPopup.show(messages.get(rownum), enterButton);
+//////            //animateSuccessGroup(list);
+//////            //updateGameState(true);
+////        } else if (rownum + 1 >= letterTilePane.getPrefRows()) {
+////            // You took too many guesses
+////            //WordPopup.show("Sorry! You lose this time!\nThe word is " + WordData.getTheWord(), enterButton);
+////            //updateGameState(false);
+////        } else // Update letter grid
+////            if (squareSize.get() >= rowsize) {
+////                squareSize.set(0);
+////                rownum++;
+////                if (rownum >= letterTilePane.getPrefRows()) {
+////                    rownum = 0;
+////                }
+////            }
+////    }
 
 
     public void switchToInfo(ActionEvent actionEvent) {

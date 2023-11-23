@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="736.0" prefWidth="414.0" stylesheets="../../../../../Wordle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.WordleController">
+<AnchorPane fx:id="Anchorpane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="736.0" prefWidth="414.0" stylesheets="@../css/Wordle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.WordleController">
     <children>
         <VBox alignment="CENTER" layoutX="223.0" layoutY="166.0" maxHeight="736.0" maxWidth="414.0" minHeight="736.0" minWidth="414.0" prefHeight="736.0" prefWidth="414.0" styleClass="box" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -59,7 +59,7 @@
                 </GridPane>
                 <TilePane fx:id="letterTilePane" alignment="TOP_CENTER" hgap="5.0" maxHeight="345.0" maxWidth="413.0" minHeight="345.0" minWidth="413.0" prefHeight="345.0" prefRows="6" prefTileHeight="50.0" prefTileWidth="55.0" prefWidth="413.0" styleClass="tile" tileAlignment="TOP_CENTER" vgap="5.0">
                     <children>
-                        <Label />
+                        <Label styleClass="label"/>
                         <Label />
                         <Label />
                         <Label />
@@ -94,9 +94,9 @@
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                     </padding>
                 </TilePane>
-                <FlowPane fx:id="buttonFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="5.0" maxHeight="200.0" maxWidth="662.0" minHeight="200.0" minWidth="412.0" prefHeight="200.0" prefWidth="662.0" prefWrapLength="320.0" styleClass="flow" vgap="8.0">
+                <FlowPane fx:id="buttonFlowPane" alignment="TOP_CENTER" columnHalignment="CENTER" hgap="5.0" maxHeight="200.0" maxWidth="662.0" minHeight="200.0" minWidth="412.0" prefHeight="200.0" prefWidth="662.0" prefWrapLength="320.0" vgap="8.0">
                     <children>
-                        <Button contentDisplay="CENTER" styleClass="button" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="Q" textAlignment="CENTER" />
+                        <Button contentDisplay="CENTER" styleClass="button1" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="Q" textAlignment="CENTER" />
                         <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="W" textAlignment="CENTER" />
                         <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="E" textAlignment="CENTER" />
                         <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectLetter" prefHeight="58.0" prefWidth="60.0" text="R" textAlignment="CENTER" />
